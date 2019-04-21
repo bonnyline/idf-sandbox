@@ -9,94 +9,96 @@
 		<header>
 			<div class="filter-toolbar">
 				<div class="title">
-					<span class="label">Title:</span>
-					<select class="value">
+					<select class="value" value="" onclick="this.setAttribute('value', this.value);">
 						<option value=""></option>
 						<option value="Mr.">Mr.</option>
 						<option value="Mrs.">Mrs.</option>
 						<option value="Ms.">Ms.</option>
 					</select>
+					<label class="select">Title</label>
 				</div>
 				<div class="first-name">
-					<span class="label">First Name:</span>
-					<input type="text" class="value" />
+					<input type="text" id="first-name" class="value" placeholder="&nbsp; "  />
+					<label class="label" for="first-name">First Name</label>
 				</div>
 				<div class="last-name">
-					<span class="label">Last Name:</span>
-					<input type="text" class="value" />
+					<input type="text" id="last-name" class="value" placeholder="&nbsp; " />
+					<label for="last-name" class="label">Last Name</label>
 				</div>
 				<div class="suffix">
-					<span class="label">Suffix:</span>
-					<select class="value">
+					<select class="value" value="" onclick="this.setAttribute('value', this.value);">
 						<option value=""></option>
 						<option value="PhD">PhD.</option>
 						<option value="Engineer">Engineer</option>
 						<option value="Doctor">Doctor</option>
 					</select>
+					<label class="select">Suffix</label>
 				</div>
 				<div class="gender">
-					<span class="label">Gender:</span>
-					<select class="value">
+					<select class="value" value="" onclick="this.setAttribute('value', this.value);">
 						<option value=""></option>
 						<option value="m">Male</option>
 						<option value="f">Female</option>
 					</select>
+					<label class="select">Gender</label>
 				</div>
 				<div class="race">
-					<span class="label">Race:</span>
-					<input type="text" class="value" />
+					<input id="race" type="text" class="value" placeholder="&nbsp; " />
+					<label for="race" class="label">Race</label>
 				</div>
 				<div class="language">
-					<span class="label">Language:</span>
-					<input type="text" class="value" />
+					<input id="language" type="text" class="value" placeholder="&nbsp; " />
+					<label for="language" class="label">Language</label>
 				</div>
 				<div class="university">
-					<span class="label">University:</span>
-					<input type="text" class="value" />
+					<input id="university" type="text" class="value" placeholder="&nbsp; " />
+					<label for="university" class="label">University</label>
 				</div>
 				<div class="buzzword">
-					<span class="label">Buzzword:</span>
-					<input type="text" class="value" />
+					<input id="buzzword" type="text" class="value" placeholder="&nbsp; " />
+					<label for="buzzword" class="label">Buzzword</label>
 				</div>
 				<div class="email">
-					<span class="label">E-Mail:</span>
-					<input type="text" class="value" />
+					<input id="email" type="text" class="value" placeholder="&nbsp; " />
+					<label for="email" class="label">E-Mail</label>
 				</div>
 				<div class="job-title">
-					<span class="label">Job Title:</span>
-					<input type="text" class="value" />
+					<input id="job" type="text" class="value" placeholder="&nbsp; " />
+					<label for="job" class="label">Job Title</label>
 				</div>
 				<div class="linkedin-skill">
-					<span class="label">LinkedinIn Skill:</span>
-					<input type="text" class="value" />
+					<input id="skills" type="text" class="value" placeholder="&nbsp; " />
+					<label for="skills" class="label">LinkedinIn Skill</label>
 				</div>
 				<div class="company">
-					<span class="label">Company:</span>
-					<input type="text" class="value" />
+					<input id="company" type="text" class="value" placeholder="&nbsp; " />
+					<label for="company" class="label">Company</label>
 				</div>
 				<div class="dept">
-					<span class="label">Department:</span>
-					<input type="text" class="value" />
+					<input id="department" type="text" class="value" placeholder="&nbsp; " />
+					<label for="department" class="label">Department</label>
 				</div>
 				<div class="ein">
-					<span class="label">Employer Identification Number:</span>
-					<input type="text" class="value" />
+					<input id="ein" type="text" class="value" placeholder="&nbsp; " />
+					<label for="ein" class="label">Employer Identification Number</label>
 				</div>
 
 
-				<div>
-					<label for="start">Start</label>
+				<div class="start-date">
+					
 					<input type="date" id="start" value="2018-09-29"
 						min="2018-01-01" max="2018-12-31" />
+						<label for="start" class="select">Start</label>
 				</div>
-				<div>
-					<label for="end">End</label>
+				<div class="end-date">
+					
 					<input type="date" id="end" value="2018-10-29"
 						min="2018-01-01" max="2018-12-31" />
+						<label for="end" class="select">End</label>
 				</div>
-
+				<button ui:field="apply" class="apply-filters">Apply Filters</button>
 			</div>
-			<button ui:field="apply" class="apply-filters">Apply Filters</button>
+			
 		</header>
 		<section>
 			<header class="controls">
@@ -106,7 +108,7 @@
 			<dp:PersonCellList ui:field="personList"
 				styleName="grid-view"></dp:PersonCellList>
 		</section>
-		<footer>
+		<footer class="list-end">	
 			<button ui:field="fetch" class="fetch">Fetch more...</button>
 		</footer>
 	</g:HTMLPanel>
