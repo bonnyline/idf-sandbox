@@ -25,7 +25,7 @@ public class PersonCellList extends AsyncCellList<PersonJSO> {
 	 */
 	protected PersonCellList() {
 		// instantiate
-		super(new PersonCell(), (CellList.Resources) GWT.create(CellListResources.class), null, 25);
+		super(new PersonCell(), (CellList.Resources) GWT.create(CellListResources.class), null, 24);
 
 		// bind, e.g. initialize
 		bind();
