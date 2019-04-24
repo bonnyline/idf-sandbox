@@ -100,6 +100,7 @@ public class PersonViewImpl_PersonViewImplUiBinderImpl implements UiBinder<com.g
 
         get_apply();
         get_toggle();
+        get_filter();
         get_reset();
         get_domId3Element().get();
         get_fetch();

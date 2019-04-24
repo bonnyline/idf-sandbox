@@ -6,107 +6,111 @@
 	
 	</ui:style>
 	<g:HTMLPanel styleName="person-view">
-		<header>
-			<div class="filter-toolbar">
-				<div class="title">
-					<select class="value" value="" onclick="this.setAttribute('value', this.value);">
-						<option value=""></option>
-						<option value="Mr.">Mr.</option>
-						<option value="Mrs.">Mrs.</option>
-						<option value="Ms.">Ms.</option>
-					</select>
-					<label class="select">Title</label>
-				</div>
-				<div class="first-name">
-					<input type="text" id="first-name" class="value" placeholder="&nbsp; "  />
-					<label class="label" for="first-name">First Name</label>
-				</div>
-				<div class="last-name">
-					<input type="text" id="last-name" class="value" placeholder="&nbsp; " />
-					<label for="last-name" class="label">Last Name</label>
-				</div>
-				<div class="suffix">
-					<select class="value" value="" onclick="this.setAttribute('value', this.value);">
-						<option value=""></option>
-						<option value="PhD">PhD.</option>
-						<option value="Engineer">Engineer</option>
-						<option value="Doctor">Doctor</option>
-					</select>
-					<label class="select">Suffix</label>
-				</div>
-				<div class="gender">
-					<select class="value" value="" onclick="this.setAttribute('value', this.value);">
-						<option value=""></option>
-						<option value="m">Male</option>
-						<option value="f">Female</option>
-					</select>
-					<label class="select">Gender</label>
-				</div>
-				<div class="race">
-					<input id="race" type="text" class="value" placeholder="&nbsp; " />
-					<label for="race" class="label">Race</label>
-				</div>
-				<div class="language">
-					<input id="language" type="text" class="value" placeholder="&nbsp; " />
-					<label for="language" class="label">Language</label>
-				</div>
-				<div class="university">
-					<input id="university" type="text" class="value" placeholder="&nbsp; " />
-					<label for="university" class="label">University</label>
-				</div>
-				<div class="buzzword">
-					<input id="buzzword" type="text" class="value" placeholder="&nbsp; " />
-					<label for="buzzword" class="label">Buzzword</label>
-				</div>
-				<div class="email">
-					<input id="email" type="text" class="value" placeholder="&nbsp; " />
-					<label for="email" class="label">E-Mail</label>
-				</div>
-				<div class="job-title">
-					<input id="job" type="text" class="value" placeholder="&nbsp; " />
-					<label for="job" class="label">Job Title</label>
-				</div>
-				<div class="linkedin-skill">
-					<input id="skills" type="text" class="value" placeholder="&nbsp; " />
-					<label for="skills" class="label">LinkedinIn Skill</label>
-				</div>
-				<div class="company">
-					<input id="company" type="text" class="value" placeholder="&nbsp; " />
-					<label for="company" class="label">Company</label>
-				</div>
-				<div class="dept">
-					<input id="department" type="text" class="value" placeholder="&nbsp; " />
-					<label for="department" class="label">Department</label>
-				</div>
-				<div class="ein">
-					<input id="ein" type="text" class="value" placeholder="&nbsp; " />
-					<label for="ein" class="label">Employer Identification Number</label>
-				</div>
-
-
-				<div class="start-date">
-					
-					<input type="date" id="start" value="2018-09-29"
-						min="2018-01-01" max="2018-12-31" />
-						<label for="start" class="select">Start</label>
-				</div>
-				<div class="end-date">
-					
-					<input type="date" id="end" value="2018-10-29"
-						min="2018-01-01" max="2018-12-31" />
-						<label for="end" class="select">End</label>
-				</div>
-				<button ui:field="apply" class="apply-filters">Apply Filters</button>
-			</div>
-			
-		</header>
 		<section>
 			<header class="controls">
-				<button ui:field="toggle" class="toggle-view-mode">Switch View Mode</button>
-				<button ui:field="reset" class="reset">Reset Data Collection</button>
+				<div class="actions">
+					<label class="toggle-filter" for="filter-toggle">Show Filter</label>
+					<div class="right">
+						<button ui:field="toggle" class="toggle-view-mode">View Mode</button>
+						<button ui:field="reset" class="reset">Reset</button>
+					</div>
+				</div>
+				<input type="checkbox" id="filter-toggle"/>
+				<div class="filter-toolbar">
+					<div class="title">
+						<select class="value" value="" onclick="this.setAttribute('value', this.value);">
+							<option value=""></option>
+							<option value="Mr.">Mr.</option>
+							<option value="Mrs.">Mrs.</option>
+							<option value="Ms.">Ms.</option>
+						</select>
+						<label class="select">Title</label>
+					</div>
+					<div class="first-name">
+						<input type="text" id="first-name" class="value" placeholder="&nbsp; "  />
+						<label class="label" for="first-name">First Name</label>
+					</div>
+					<div class="last-name">
+						<input type="text" id="last-name" class="value" placeholder="&nbsp; " />
+						<label for="last-name" class="label">Last Name</label>
+					</div>
+					<div class="suffix">
+						<select class="value" value="" onclick="this.setAttribute('value', this.value);">
+							<option value=""></option>
+							<option value="PhD">PhD.</option>
+							<option value="Engineer">Engineer</option>
+							<option value="Doctor">Doctor</option>
+						</select>
+						<label class="select">Suffix</label>
+					</div>
+					<div class="gender">
+						<select class="value" value="" onclick="this.setAttribute('value', this.value);">
+							<option value=""></option>
+							<option value="m">Male</option>
+							<option value="f">Female</option>
+						</select>
+						<label class="select">Gender</label>
+					</div>
+					<div class="race">
+						<input id="race" type="text" class="value" placeholder="&nbsp; " />
+						<label for="race" class="label">Race</label>
+					</div>
+					<div class="language">
+						<input id="language" type="text" class="value" placeholder="&nbsp; " />
+						<label for="language" class="label">Language</label>
+					</div>
+					<div class="university">
+						<input id="university" type="text" class="value" placeholder="&nbsp; " />
+						<label for="university" class="label">University</label>
+					</div>
+					<div class="buzzword">
+						<input id="buzzword" type="text" class="value" placeholder="&nbsp; " />
+						<label for="buzzword" class="label">Buzzword</label>
+					</div>
+					<div class="email">
+						<input id="email" type="text" class="value" placeholder="&nbsp; " />
+						<label for="email" class="label">E-Mail</label>
+					</div>
+					<div class="job-title">
+						<input id="job" type="text" class="value" placeholder="&nbsp; " />
+						<label for="job" class="label">Job Title</label>
+					</div>
+					<div class="linkedin-skill">
+						<input id="skills" type="text" class="value" placeholder="&nbsp; " />
+						<label for="skills" class="label">LinkedinIn Skill</label>
+					</div>
+					<div class="company">
+						<input id="company" type="text" class="value" placeholder="&nbsp; " />
+						<label for="company" class="label">Company</label>
+					</div>
+					<div class="dept">
+						<input id="department" type="text" class="value" placeholder="&nbsp; " />
+						<label for="department" class="label">Department</label>
+					</div>
+					<div class="ein">
+						<input id="ein" type="text" class="value" placeholder="&nbsp; " />
+						<label for="ein" class="label">Employer Id Number</label>
+					</div>
+
+
+					<div class="start-date">
+						
+						<input type="date" id="start" value="2018-09-29"
+							min="2018-01-01" max="2018-12-31" />
+							<label for="start" class="select">Start</label>
+					</div>
+					<div class="end-date">
+						
+						<input type="date" id="end" value="2018-10-29"
+							min="2018-01-01" max="2018-12-31" />
+							<label for="end" class="select">End</label>
+					</div>
+					<button ui:field="apply" class="apply-filters">Apply Filters</button>
+				</div>
+				
 			</header>
 			<dp:PersonCellList ui:field="personList"
-				styleName="grid-view"></dp:PersonCellList>
+				styleName="grid-view wrapper"></dp:PersonCellList>
 		</section>
 		<footer class="list-end">	
 			<button ui:field="fetch" class="fetch">Fetch more...</button>

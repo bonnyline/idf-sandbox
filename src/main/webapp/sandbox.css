@@ -54,8 +54,6 @@ body {
 }
 
 section {
-    width: 80%;
-    float: right;
     position: relative
 }
 
@@ -64,33 +62,23 @@ footer {
 }
 
 .filter-toolbar {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    width: 80%
-}
-
-.filter-toolbar>div {
-    width: calc(50% - 10px);
+    height: 0px;
+    overflow: hidden;
+    padding: 0;
+    border-top: 1px solid #ffffff;
+    width: 100%;
     float: left;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    background: #ececec;
-    margin: 10px 0
+    transition: all .3s cubic-bezier(.2, 0, 0, 1);
 }
 
-.filter-toolbar>div:nth-child(2n), .filter-toolbar>div.end-date {
-    margin-left: 20px
+.toggle-filter {
+    float: left;
 }
 
-.filter-toolbar .ein {
-    width: 100%
-}
-
-.filter-toolbar div.start-date {
-    margin-left: 0px
+#filter-toggle:checked~div.filter-toolbar {
+    padding: 1.5% 0;
+    height: auto;
+    border-top: 1px solid #f1f1f1;
 }
 
 input, select {
@@ -107,9 +95,11 @@ input, select {
     -o-appearance: none;
     appearance: none
 }
-input:focus, select:focus{
-    outline:0
+
+input:focus, select:focus {
+    outline: 0
 }
+
 select {
     background-position: 96% 39%;
     background-repeat: no-repeat;
@@ -141,57 +131,55 @@ select:focus~label, select:not([value=""]):valid~label, input:not(:placeholder-s
 
 .apply-filters {
     height: 3.1rem;
-    width: 100%;
-    margin-top: 10px
+    margin: .5% 0 .5% 1.2%;
+    width: 10.04%;
 }
 
 /* END FILTER SECTION */
 
 /* DATA GRID */
 
-.cellListEvenItem {
-    float: left
-}
-
-.grid-view .cellListEvenItem, .grid-view .cellListOddItem {
-    -ms-flex-preferred-size: calc(25% - 24px);
-    flex-basis: calc(25% - 24px);
-    max-width: calc(25% - 24px);
-    height: auto;
-    margin-bottom: 30px!important
-}
-
 header.controls {
     min-height: auto;
     width: 100%;
-    padding: 2vh 4vw;
+    padding: 0 4vw;
     background: white;
     z-index: 2;
     border-bottom: 1px solid #f3f3f3;
     -webkit-box-shadow: 0px 0px 9px 0px rgb(240, 240, 240);
     box-shadow: 0px 0px 9px 0px rgb(240, 240, 240);
-    position: sticky;
+    position: fixed;
     top: 0
 }
 
-.reset {
+.actions {
     display: block;
+    padding: 1.5% 0;
+    width: 100%;
+    float: left;
+}
+
+.reset {
+    display: inline;
+}
+
+.right {
     float: right
 }
 
-.controls>button {
+.actions button, .controls .toggle-filter {
     background: none;
     color: #222;
     padding: 10px 0
 }
 
-.toggle-view-mode, .reset, .copy, .delete {
+.toggle-view-mode, .reset, .copy, .delete, .toggle-filter {
     position: relative;
     transition: all .3s cubic-bezier(.2, 0, 0, 1);
     z-index: 1
 }
 
-.toggle-view-mode::after, .reset::after, .copy::after, .delete::after {
+.toggle-filter::after, .toggle-view-mode::after, .reset::after, .copy::after, .delete::after {
     content: '';
     display: block;
     height: 3px;
@@ -199,17 +187,22 @@ header.controls {
     bottom: 0;
     right: 0px;
     left: 0px;
-    background-color: #43b364;
+    background-color: #37cd8f;
     transition: all .3s cubic-bezier(.2, 0, 0, 1);
     transform-origin: bottom center;
     z-index: -1
 }
 
-.toggle-view-mode:hover, .reset:hover, .person-cell .controls button.copy:hover, .person-cell .controls button.delete:hover {
-    color: #fff
+.toggle-view-mode {
+    margin-right: 30px;
 }
 
-.toggle-view-mode:hover::after, .reset:hover::after {
+.toggle-filter:hover, .toggle-view-mode:hover, .reset:hover, .person-cell .controls button.copy:hover, .person-cell .controls button.delete:hover {
+    color: #fff;
+    cursor: pointer
+}
+
+.toggle-filter:hover::after, .toggle-view-mode:hover::after, .reset:hover::after {
     right: -30px;
     left: -30px;
     height: 100%
@@ -222,12 +215,18 @@ header.controls {
 }
 
 .grid-view, .table-view {
-    padding: 8vh 4vw 4vh
+    padding: 10vh 4vw 4vh
 }
 
-button {
+#filter-toggle {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+button, .toggle-filter {
     font-family: inherit;
-    background: #43b364;
+    background: #37cd8f;
     color: #fff;
     padding: 7px 23px;
     font-size: 12px;
@@ -244,21 +243,9 @@ button {
     flex-wrap: wrap
 }
 
-.grid-view>div>div:nth-child(4n) {
-    margin: 0 0 30px 15px
-}
-
-.grid-view>div>div:nth-child(4n+1) {
-    margin: 0 15px 30px 0
-}
-
-.grid-view>div>div {
-    margin: 0 15px
-}
-
 .person-cell {
     background-color: #fff;
-    padding: 45px 45px 65px;
+    padding: 6% 9% 50px;
     float: left;
     width: 100%;
     position: relative;
@@ -287,18 +274,17 @@ button {
 }
 
 .person-cell figure .caption span {
-    padding-left: 15px;
     display: block
 }
 
 .person-cell header {
-    padding: 0 0 30px;
+    padding: 0 0 6%;
     position: unset;
     display: block;
     width: 100%;
     min-height: 50px;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.2rem;
     box-shadow: none
 }
 
@@ -315,27 +301,44 @@ button {
 .person-cell section {
     width: 100%;
     position: relative;
-    line-height: 19px
+    line-height: 1.2rem
+}
+
+.grid-view .personal-info, .grid-view .work, .grid-view .person-cell aside {
+    display: flex;
+}
+
+.grid-view .race, .grid-view .work>div:nth-child(1), .grid-view .linkedin-skill, .grid-view .email {
+    width: 60%;
+    padding-right: 10%;
+}
+
+.grid-view .language, .grid-view .work>div:nth-child(2), .grid-view .buzzword, .grid-view .ein {
+    width: 33%
 }
 
 .grid-view .person-cell footer {
     position: absolute;
-    bottom: 20px;
+    bottom: 16px;
     transition: all 0.2s cubic-bezier(.2, 0, 0, 1)
 }
 
 .person-cell .race:before, .person-cell .language:before, .person-cell .university:before, .person-cell .job-title:before, .person-cell .department:before, .person-cell .ein:before, .person-cell .linkedin-skill:before, .person-cell .buzzword:before {
     content: attr(title);
     display: block;
-    font-size: 12px;
+    font-size: 0.8rem;
     text-transform: uppercase;
     font-weight: 700;
     opacity: .5;
     letter-spacing: 1px
 }
 
-.grid-view .person-cell .language:before, .grid-view .person-cell .department:before, .grid-view .person-cell .ein:before, .grid-view .person-cell .buzzword:before {
-    padding-top: 10px
+.grid-view .ein, .grid-view .contact {
+    padding-bottom: 0!important;
+}
+
+.grid-view .caption {
+    padding-left: 5%
 }
 
 .person-cell .controls button {
@@ -347,7 +350,7 @@ button {
 
 .person-cell .controls button.edit {
     color: #fff;
-    background: #43b364;
+    background: #37cd8f;
     padding: 7px 16px;
     margin: 0 10px 0 0
 }
@@ -356,10 +359,8 @@ button {
     color: #222
 }
 
-.grid-view .person-cell>section>div {
-    padding-bottom: 15px;
-    border-bottom: 1px solid #f1f1f1;
-    margin-bottom: 15px;
+.grid-view .person-cell>section>div, .grid-view .person-cell aside {
+    padding-bottom: .7rem;
     transition: all 0.3s cubic-bezier(.2, 0, 0, 1)
 }
 
@@ -375,7 +376,7 @@ button {
 }
 
 .list-end {
-    width: 80%;
+    width: 100%;
     float: right;
     position: relative
 }
@@ -472,3 +473,133 @@ button {
 }
 
 /**/
+
+@media only screen and (min-width: 1350px) {
+    .grid-view .cellListEvenItem, .grid-view .cellListOddItem {
+        -ms-flex-preferred-size: 23.35%;
+        flex-basis: 23.35%;
+        max-width: 23.35%;
+        height: auto;
+        margin: 1% 0 1% 2.2%;
+        float: left;
+    }
+    .grid-view>div>div:nth-child(4n-3) {
+        margin-left: 0
+    }
+    html {
+        font-size: 14px;
+    }
+    .actions, #filter-toggle:checked~div.filter-toolbar {
+        padding: 1.2% 0;
+    }
+}
+
+@media only screen and (min-width: 1350px) {
+    .filter-toolbar>div {
+        width: 10.04%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: #ececec;
+        margin: .5% 0 .5% 1.2%;
+    }
+    .filter-toolbar>div:nth-child(9n-8) {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 1350px) and (min-width: 980px) {
+    .grid-view .cellListEvenItem, .grid-view .cellListOddItem {
+        -ms-flex-preferred-size: 31.86%;
+        flex-basis: 31.86%;
+        max-width: 31.86%;
+        height: auto;
+        margin: 1% 0 1% 2.2%;
+        float: left;
+    }
+    .grid-view>div>div:nth-child(3n-2) {
+        margin-left: 0
+    }
+    html {
+        font-size: 14px;
+    }
+    .filter-toolbar>div {
+        width: 10.04%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: #ececec;
+        margin: .5% 0 .5% 1.2%;
+    }
+    .filter-toolbar>div:nth-child(9n-8) {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 980px) and (min-width: 650px) {
+    .grid-view .cellListEvenItem, .grid-view .cellListOddItem {
+        -ms-flex-preferred-size: 48.9%;
+        flex-basis: 48.9%;
+        max-width: 48.9%;
+        height: auto;
+        margin: 1% 0 1% 2.2%;
+        float: left;
+    }
+    .grid-view>div>div:nth-child(2n-1) {
+        margin-left: 0
+    }
+    .filter-toolbar>div {
+        width: 15.66%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: #ececec;
+        margin: .5% 0 .5% 1.2%;
+    }
+    .filter-toolbar>div:nth-child(6n-5) {
+        margin-left: 0;
+    }
+    .apply-filters {
+        width: 15.66%
+    }
+    .person-cell>footer nav.controls {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .grid-view .cellListEvenItem, .grid-view .cellListOddItem {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 2% 0;
+        float: left;
+    }
+    .filter-toolbar>div {
+        width: 49.4%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: #ececec;
+        margin: .5% 0 .5% 1.2%;
+    }
+    .filter-toolbar>div:nth-child(2n-1) {
+        margin-left: 0;
+    }
+    .apply-filters {
+        width: 49.4%
+    }
+    .person-cell>footer nav.controls {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    .actions, #filter-toggle:checked~div.filter-toolbar {
+        padding: 2.6% 0;
+    }
+}

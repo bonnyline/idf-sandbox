@@ -35,6 +35,7 @@
 <!-- be added before this line.                -->
 <!--                                           -->
 <script type="text/javascript" src="IdfSandbox/IdfSandbox.nocache.js"></script>
+
 </head>
 
 <!--                                           -->
@@ -43,7 +44,22 @@
 <!-- to create a completely dynamic UI.        -->
 <!--                                           -->
 <body>
-
+	<script type="text/javascript">
+	  
+	var wrapper = document.getElementById('wrapper').children[0];
+	var ele = wrapper.children;
+	var delay = '.3s';
+	
+	for (var i=0;i<ele.length;i++) {
+			
+		alert(ele[i].style.animationDelay);
+		
+		ele[i].style.animationDelay = delay;
+		
+		alert(ele[i].style.animationDelay);
+	}
+	
+	</script>
 	<!-- OPTIONAL: include this if you want history support -->
 	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
 		style="position: absolute; width: 0; height: 0; border: 0"></iframe>
